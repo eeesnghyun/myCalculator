@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import styles from "./radio.module.scss";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useState } from "react";
 
 type OptionType = {
   value: string;
