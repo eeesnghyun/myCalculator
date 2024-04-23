@@ -1,5 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import styles from "./radio.module.scss";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type OptionType = {
   value: string;
@@ -17,14 +18,27 @@ type Props = {
 const MyRadio = ({ id, label, require, options }: Props) => {
   const { register } = useFormContext();
 
+  const [selectedOption, setSelectedOption] = useState(options[0].value);
+  const onChangeRadio = (e: OptionType) => {
+    setSelectedOption(e.value);
+  };
+
   return (
     <div className="row">
       <label className={require ? "require" : ""}>{label}</label>
       <div className={styles.radio_wrap}>
         {options.map((option, index) => (
           <label className={styles.radio_button} key={index}>
-            <input type="radio" value={option.value} {...register(id)} />
-            <span className={styles.option}>{option.name}</span>
+            <input
+              type="radio"
+              id={option.value}
+              value={option.value}
+              {...register(id)}
+              onChange={() => onChangeRadio(option)}
+            />
+            <div className={`${styles.option} ${option.value === selectedOption ? styles.active : ""}`}>
+              {option.name}
+            </div>
           </label>
         ))}
       </div>

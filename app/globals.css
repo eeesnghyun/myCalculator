@@ -22,12 +22,13 @@ main {
 
   .row {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin-bottom: 40px;
 
     label {
       min-width: 120px;
       font-weight: 600;
+      margin-bottom: 6px;
     }
   }
 }

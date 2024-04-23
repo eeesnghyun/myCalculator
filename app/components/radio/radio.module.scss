@@ -1,7 +1,7 @@
 .radio_wrap {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
 
   input {
     padding: 0;
@@ -14,16 +14,25 @@
     appearance: none;
   }
   .radio_button {
-    min-width: 100px;
+    display: flex;
+    width: 100%;
+    gap: 8px;
   }
 }
 
 .option {
-  border: 1px solid red;
+  width: 100%;
+  display: flex;
+  align-items: center;
   line-height: 1.2;
   border-radius: 5px;
-  background-color: #fafafa;
-  margin: 4px;
-  text-align: center;
-  padding: 4px 16px;
+  padding: 12px 20px;
+  font-weight: 500;
+  word-break: keep-all;
+  cursor: pointer;
+  background-color: #f9fafb;
+}
+.active {
+  background-color: #0479f6;
+  color: #fff;
 }

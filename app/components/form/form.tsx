@@ -16,7 +16,7 @@ const OPTIONS = [
   },
   {
     value: "3",
-    name: "만기일시",
+    name: "만기 일시",
   },
 ];
 
