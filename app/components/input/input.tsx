@@ -16,7 +16,7 @@ const MyInput = ({ id, label, unit, type, width, require, placeholder }: Props) 
 
   return (
     <div className="row" style={{ width: width ? width + "%" : "" }}>
-      <label className={require ? "require" : ""}>{label}</label>
+      <label>{label}</label>
       <div className={styles.input_wrap}>
         <input
           type={type ? type : "text"}

@@ -1,0 +1,31 @@
+.modal_wrap {
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.16);
+
+  .close_btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    color: #333d4b;
+    z-index: 999;
+  }
+}
+.modal_content {
+  position: relative;
+  width: max-content;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+}

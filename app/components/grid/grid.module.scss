@@ -1,0 +1,25 @@
+.grid_container {
+  font-size: 15px;
+
+  .grid_header {
+    min-height: 55px;
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    background: #f9fafb;
+    margin-top: 20px;
+
+    li {
+      text-align: center;
+    }
+  }
+
+  .grid_body {
+    font-family: "BookkMyungjo-Bd";
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    transition: background-color 0.2s ease;
+    min-height: 45px;
+  }
+}
