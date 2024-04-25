@@ -25,7 +25,7 @@ const MyGrid = ({ params }: Props) => {
 
   /**
    * 원리금 균등 분할 상환
-   * 계산식 : M = P * r * (1 + r)^n / ((1 + r)^n - 1);
+   * 계산식 : M = P * r * (1 + r)^n / ((1 + r)^n - 1)
    * @param amount
    * @param monthlyRate
    * @param month
@@ -37,15 +37,14 @@ const MyGrid = ({ params }: Props) => {
 
     while (index <= month) {
       // 총 납부액
-      const monthlyPayment = Math.round(
-        (amount * monthlyRate * Math.pow(1 + monthlyRate, month)) / (Math.pow(1 + monthlyRate, month) - 1)
-      );
+      const monthlyPayment =
+        (amount * monthlyRate * Math.pow(1 + monthlyRate, month)) / (Math.pow(1 + monthlyRate, month) - 1);
       // 이자액 : 잔여원금 * 월 이자율
       const interest = remainPayment * monthlyRate;
       // 상환원금 : 총 납부액 - 이자액
-      const principalPayment = monthlyPayment - Math.round(interest);
+      const principalPayment = monthlyPayment - interest;
       // 잔여원금 : 잔여원금 - 상환원금
-      remainPayment = Math.round(remainPayment - principalPayment);
+      remainPayment = remainPayment - principalPayment;
 
       //   console.log(`-- ${index}회차 --`);
       //   console.log(`총납부액 : ${monthlyPayment)}`);
@@ -55,10 +54,10 @@ const MyGrid = ({ params }: Props) => {
 
       newResults.push({
         round: index,
-        principalPayment: principalPayment.toLocaleString(),
+        principalPayment: Math.round(principalPayment).toLocaleString(),
         interest: Math.round(interest).toLocaleString(),
-        monthlyPayment: monthlyPayment.toLocaleString(),
-        remainPayment: remainPayment.toLocaleString(),
+        monthlyPayment: Math.round(monthlyPayment).toLocaleString(),
+        remainPayment: Math.abs(Math.round(remainPayment)).toLocaleString(),
       });
       index++;
     }
@@ -81,31 +80,30 @@ const MyGrid = ({ params }: Props) => {
 
     while (index <= month) {
       // 이자액 : 잔여원금 * 월 이자율
-      const interest = Math.round(remainPayment * monthlyRate);
+      const interest = remainPayment * monthlyRate;
       // 총 납부액
-      const monthlyPayment = Math.round(amount / month + interest);
+      const monthlyPayment = amount / month + interest;
 
       // 상환원금 : 총 납부액 - 이자액
       if (index === 1) {
-        principalPayment = Math.round(monthlyPayment - interest);
+        principalPayment = monthlyPayment - interest;
       }
 
       // 잔여원금 : 잔여원금 - 상환원금
-      remainPayment =
-        Math.round(remainPayment - principalPayment) < 10 ? 0 : Math.round(remainPayment - principalPayment);
+      remainPayment = remainPayment - principalPayment;
 
       //   console.log(`-- ${index}회차 --`);
-      //   console.log(`총납부액 : ${monthlyPayment}`);
+      // console.log(`총납부액 : ${monthlyPayment}`);
       //   console.log(`이자액 : ${interest}`);
       //   console.log(`상환원금 : ${principalPayment}`);
       //   console.log(`잔여원금 : ${remainPayment}`);
 
       newResults.push({
         round: index,
-        principalPayment: principalPayment.toLocaleString(),
-        interest: interest.toLocaleString(),
-        monthlyPayment: monthlyPayment.toLocaleString(),
-        remainPayment: remainPayment.toLocaleString(),
+        principalPayment: Math.round(principalPayment).toLocaleString(),
+        interest: Math.round(interest).toLocaleString(),
+        monthlyPayment: Math.round(monthlyPayment).toLocaleString(),
+        remainPayment: Math.abs(Math.round(remainPayment)).toLocaleString(),
       });
       index++;
     }
@@ -127,7 +125,7 @@ const MyGrid = ({ params }: Props) => {
 
     while (index <= month) {
       // 이자액 : 잔여원금 * 월 이자율
-      const interest = Math.round(amount * monthlyRate);
+      const interest = amount * monthlyRate;
 
       // 상환원금 : 마지막 회차에 납부
       if (index === month) {
@@ -148,10 +146,10 @@ const MyGrid = ({ params }: Props) => {
 
       newResults.push({
         round: index,
-        principalPayment: principalPayment.toLocaleString(),
-        interest: interest.toLocaleString(),
-        monthlyPayment: monthlyPayment.toLocaleString(),
-        remainPayment: remainPayment.toLocaleString(),
+        principalPayment: Math.round(principalPayment).toLocaleString(),
+        interest: Math.round(interest).toLocaleString(),
+        monthlyPayment: Math.round(monthlyPayment).toLocaleString(),
+        remainPayment: Math.abs(Math.round(remainPayment)).toLocaleString(),
       });
       index++;
     }
@@ -160,17 +158,13 @@ const MyGrid = ({ params }: Props) => {
   };
 
   useEffect(() => {
-    // console.log(params);
-
     const method = params?.paymentMethod;
     // 대출원금
     const amount = Number(params?.amount);
-    // 월 이자율 : 대출 연이율  / 12 / 100
+    // 월 이자율 : 대출 연이율 / 12 / 100
     const monthlyRate = Number(params!.interest) / 12 / 100;
     // 대출기간(월 변환)
     const month = Number(params?.period!) * 12;
-
-    // console.log(`월 이자율 : ${monthlyRate}`);
 
     switch (method) {
       case "1":
