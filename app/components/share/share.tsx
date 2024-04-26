@@ -41,7 +41,7 @@ export default function MyShare({ paymentMethod, amount, period, interest }: Pro
         content: {
           title: "my-calculator",
           description: "계산 결과를 확인해 보세요!",
-          imageUrl: "https://calculator.codedream.co.kr/favicon.png",
+          imageUrl: `${window.location.origin}/favicon.png`,
           link: {
             mobileWebUrl: redirectUrl,
             webUrl: redirectUrl,
