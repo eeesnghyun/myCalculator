@@ -1,0 +1,12 @@
+.share_image {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  img {
+    border-radius: 8px;
+    background-color: #f9e101;
+    padding: 2px;
+    cursor: pointer;
+  }
+}

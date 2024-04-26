@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./grid.module.scss";
+import MyShare from "../share/share";
 
 export type GridType = {
   paymentMethod: string;
@@ -200,6 +201,15 @@ const MyGrid = ({ params }: Props) => {
           </ul>
         );
       })}
+
+      <div>
+        <MyShare
+          paymentMethod={params?.paymentMethod!}
+          amount={params?.amount!}
+          period={params?.period!}
+          interest={params?.interest!}
+        />
+      </div>
     </div>
   );
 };
