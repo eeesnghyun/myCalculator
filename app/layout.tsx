@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 declare global {
   interface Window {
     Kakao: any;
+    shareChannel: any;
+    alertChannel: any;
   }
 }
 
