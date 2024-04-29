@@ -46,17 +46,34 @@ export default function Calcurator() {
   };
 
   const onInvalid = (errors: any) => {
-    console.log(errors);
+    if (errors) {
+      if (window.alertChannel) {
+        let message = "";
+        if (errors && errors.amount) {
+          message = errors.amount.message;
+        } else if (errors && errors.period) {
+          message = errors.period.message;
+        } else if (errors && errors.interest) {
+          message = errors.interest.message;
+        }
 
-    if (errors && errors.amount) {
-      alert(errors.amount.message);
-      return;
-    } else if (errors && errors.period) {
-      alert(errors.period.message);
-      return;
-    } else if (errors && errors.interest) {
-      alert(errors.interest.message);
-      return;
+        window.alertChannel.postMessage(
+          JSON.stringify({
+            message: message,
+          })
+        );
+      } else {
+        if (errors && errors.amount) {
+          alert(errors.amount.message);
+          return;
+        } else if (errors && errors.period) {
+          alert(errors.period.message);
+          return;
+        } else if (errors && errors.interest) {
+          alert(errors.interest.message);
+          return;
+        }
+      }
     }
   };
 
@@ -67,7 +84,10 @@ export default function Calcurator() {
       <MyInput id={"period"} label={"대출기간"} require={true} unit={"년"} />
       <MyInput id={"interest"} label={"연이자"} require={true} unit={"%"} />
 
-      <MyButton text={"계산하기"} onClick={methods.handleSubmit(onSubmit, onInvalid)} />
+      <MyButton
+        text={"계산하기"}
+        onClick={methods.handleSubmit(onSubmit, onInvalid)}
+      />
 
       {toggleModal && (
         <Modal setToggleModal={setToggleModal}>
