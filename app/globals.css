@@ -20,6 +20,11 @@ main .container h1 {
   text-align: center;
   margin-bottom: 80px;
 }
+@media (max-width: 480px) {
+  main {
+    padding: 30px 15px;
+  }
+}
 main .row {
   display: flex;
   flex-direction: column;

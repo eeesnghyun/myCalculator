@@ -39,7 +39,8 @@ const MyGrid = ({ params }: Props) => {
     while (index <= month) {
       // 총 납부액
       const monthlyPayment =
-        (amount * monthlyRate * Math.pow(1 + monthlyRate, month)) / (Math.pow(1 + monthlyRate, month) - 1);
+        (amount * monthlyRate * Math.pow(1 + monthlyRate, month)) /
+        (Math.pow(1 + monthlyRate, month) - 1);
       // 이자액 : 잔여원금 * 월 이자율
       const interest = remainPayment * monthlyRate;
       // 상환원금 : 총 납부액 - 이자액
@@ -182,25 +183,35 @@ const MyGrid = ({ params }: Props) => {
 
   return (
     <div className={styles.grid_container}>
-      <ul className={styles.grid_header}>
-        <li style={{ width: "10%" }}>회차</li>
-        <li style={{ width: "22%" }}>상환원금</li>
-        <li style={{ width: "22%" }}>이자액</li>
-        <li style={{ width: "23%" }}>총납부액</li>
-        <li style={{ width: "23%" }}>잔여원금</li>
-      </ul>
+      <div className={styles.contents}>
+        <ul className={styles.grid_header}>
+          <li style={{ width: "10%" }}>회차</li>
+          <li style={{ width: "22%" }}>상환원금</li>
+          <li style={{ width: "22%" }}>이자액</li>
+          <li style={{ width: "23%" }}>총납부액</li>
+          <li style={{ width: "23%" }}>잔여원금</li>
+        </ul>
 
-      {result?.map((obj, index) => {
-        return (
-          <ul className={styles.grid_body} key={index}>
-            <li style={{ width: "10%", textAlign: "center" }}>{obj.round}</li>
-            <li style={{ width: "22%", textAlign: "right" }}>{obj.principalPayment}</li>
-            <li style={{ width: "22%", textAlign: "right" }}>{obj.interest}</li>
-            <li style={{ width: "23%", textAlign: "right" }}>{obj.monthlyPayment}</li>
-            <li style={{ width: "23%", textAlign: "right" }}>{obj.remainPayment}</li>
-          </ul>
-        );
-      })}
+        {result?.map((obj, index) => {
+          return (
+            <ul className={styles.grid_body} key={index}>
+              <li style={{ width: "10%", textAlign: "center" }}>{obj.round}</li>
+              <li style={{ width: "22%", textAlign: "right" }}>
+                {obj.principalPayment}
+              </li>
+              <li style={{ width: "22%", textAlign: "right" }}>
+                {obj.interest}
+              </li>
+              <li style={{ width: "23%", textAlign: "right" }}>
+                {obj.monthlyPayment}
+              </li>
+              <li style={{ width: "23%", textAlign: "right" }}>
+                {obj.remainPayment}
+              </li>
+            </ul>
+          );
+        })}
+      </div>
 
       <div>
         <MyShare

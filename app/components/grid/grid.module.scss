@@ -1,6 +1,21 @@
 .grid_container {
   font-size: 15px;
 
+  .contents {
+    height: 80vh;
+    overflow: auto;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    margin-bottom: 20px;
+
+    @media (max-width: 480px) {
+      height: 65vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+  }
+
   .grid_header {
     min-height: 55px;
     display: flex;
