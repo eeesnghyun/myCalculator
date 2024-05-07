@@ -18,7 +18,7 @@ main .container {
 }
 main .container h1 {
   text-align: center;
-  margin-bottom: 80px;
+  margin: 40px 0px;
 }
 @media (max-width: 480px) {
   main {
