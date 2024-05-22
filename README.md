@@ -16,8 +16,12 @@
 
 📒 포스팅
 
-1. [서비스 기획과 웹 프로젝트 생성](https://shxrecord.tistory.com/334){: target="\_blank"}
-2. [Next.js로 웹 서비스 개발하기](https://shxrecord.tistory.com/335){:target="\_blank"}
-3. [웹 배포하기](https://shxrecord.tistory.com/339){:target="\_blank"}
-4. [Flutter로 모바일 서비스 개발하기](https://shxrecord.tistory.com/341){:target="\_blank"}
-5. [플레이스토어와 앱스토어에 어플리케이션 배포하기](https://shxrecord.tistory.com/344){:target="\_blank"}
+1. [서비스 기획과 웹 프로젝트 생성](https://shxrecord.tistory.com/334)
+2. [Next.js로 웹 서비스 개발하기](https://shxrecord.tistory.com/335)
+3. [웹 배포하기](https://shxrecord.tistory.com/339)
+4. [Flutter로 모바일 서비스 개발하기](https://shxrecord.tistory.com/341)
+5. [플레이스토어와 앱스토어에 어플리케이션 배포하기](https://shxrecord.tistory.com/344)
+
+---
+
+※ [대산기](https://daesanki.codedream.co.kr/)는 본 코드를 커스터마이징하였습니다.
